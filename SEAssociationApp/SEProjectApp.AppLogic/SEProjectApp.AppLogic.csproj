@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SEProjectApp.Abstractions\SEProjectApp.Abstractions.csproj" />
+    <ProjectReference Include="..\SEProjectApp.DataAccess\SEProjectApp.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
