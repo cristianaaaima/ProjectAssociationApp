@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SEProjectApp.DataModel.Apartment>
+  
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Apartments</h1>
+
+<p>
+    <a class="badge badge-dark" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuildingNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Building)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuildingNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Building.BuildingId)
+            </td>
+            <td>
+                <a class="badge badge-pill badge-warning" asp-action="Edit" asp-route-id="@item.ApartmentId">Edit</a> |
+                <a class="badge badge-pill badge-info" asp-action="Details" asp-route-id="@item.ApartmentId">Details</a> |
+                <a class="badge badge-pill badge-danger" asp-action="Delete" asp-route-id="@item.ApartmentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

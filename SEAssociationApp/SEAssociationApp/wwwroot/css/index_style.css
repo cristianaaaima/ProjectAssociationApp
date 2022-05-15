@@ -1,0 +1,164 @@
+/* {
+    margin: 0;
+}*/
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 20rem;
+    /*margin-left: 100px;*/
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+   /* background-color: pink;*/
+    background-image: url("\img\poza2.jpg");
+}
+/*a,
+a:hover,
+a:active,
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.navebar {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(0, 0, 0);*
+    /*position: fixed; 
+}
+
+/*.navebar-container {
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    height: 100%;
+    color: white;
+}
+
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    font-family: 'Sen', sans-serif;
+    font-size: 30px;
+}
+
+.menu-container {
+    flex: 6;
+}
+
+.menu-list {
+    display: flex;
+    list-style: none;
+}
+
+.menu-list-item {
+    margin-right: 30px;
+    font-family: 'Sen', sans-serif
+}
+
+.profile-container {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.profile-text-container {
+    margin: 0 15px;
+}
+
+.profile-picture {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}*/
+
+/* .toggle {
+    width: 40px;
+    height: 20px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.toggle-icon {
+    color: goldenrod;
+}
+
+.toggle-ball {
+    width: 18px;
+    height: 18px;
+    background-color: black;
+    position: absolute;
+    right: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+} */
+
+/*.sidebar {
+    width: 50px;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    top: 0;
+}*/
+/*
+.container {
+    background-color: #151515;
+    height: calc(100vh - 50px);
+    color: white;
+}
+
+.content-container {
+    margin-left: 50px;
+}*/
+
+.wallpaper-photo {
+    background-image: url("\img\poza2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: calc(100vh - 50px);
+    margin: 0;
+    padding: 0;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 50px;
+}
+
+
+.bg-text {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    font-family: 'Sen', sans-serif;
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 45%;
+    padding: 20px;
+    text-align: center;
+}

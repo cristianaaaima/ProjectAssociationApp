@@ -10,18 +10,18 @@ namespace SEProjectApp.DataModel
     {
         public int ApartmentId { get; set; }
 
-        public int ApartmentNo { get; set; }
+        public int? ApartmentNo { get; set; }
 
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
 
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
 
-        public int BuildingId { get; set; }
+        public int? BuildingId { get; set; }
 
-        public string BuildingNo { get; set; }
+        public string? BuildingNo { get; set; }
 
-        public Building Building { get; set; }
+        public Building? Building { get; set; }
 
-        public ICollection<Invoice> Invoices { get; set; }
+        public ICollection<Invoice>? Invoices { get; set; }
     }
 }
