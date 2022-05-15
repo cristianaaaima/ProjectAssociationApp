@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SEProjectApp.DataAccess
 {
-    public class AssociationContext: IdentityDbContext<IdentityUser>
+    public class AssociationContext: DbContext
     {
         public AssociationContext(DbContextOptions options) : base(options)
         { 
