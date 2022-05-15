@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SEProjectApp.DataModel;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SEProjectApp.DataAccess
 {
-    public class AssociationContext :DbContext
+    public class AssociationContext: DbContext
     {
         public AssociationContext(DbContextOptions options) : base(options)
         { 

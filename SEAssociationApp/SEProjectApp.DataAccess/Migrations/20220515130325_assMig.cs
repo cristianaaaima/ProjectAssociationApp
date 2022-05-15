@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SEProjectApp.DataAccess.Migrations
 {
-    public partial class assocMig : Migration
+    public partial class assMig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

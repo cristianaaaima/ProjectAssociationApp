@@ -12,8 +12,8 @@ using SEProjectApp.DataAccess;
 namespace SEProjectApp.DataAccess.Migrations
 {
     [DbContext(typeof(AssociationContext))]
-    [Migration("20220514220919_assocMig")]
-    partial class assocMig
+    [Migration("20220515130325_assMig")]
+    partial class assMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
