@@ -1,0 +1,66 @@
+﻿@model SEProjectApp.DataModel.Invoice
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<h4>Invoice</h4>
+<hr />
+<center>
+    <div style="padding-left: 4em; padding-right: 4em;max-width: 40rem">
+        <div class="">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ApartmentNo" class="control-label"></label>
+                    <input asp-for="ApartmentNo" class="form-control" />
+                    <span asp-validation-for="ApartmentNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ApartmentId" class="control-label"></label>
+                    <input asp-for="ApartmentId" class="form-control" />
+                    <span asp-validation-for="ApartmentId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DueDate" class="control-label"></label>
+                    <input asp-for="DueDate" class="form-control" />
+                    <span asp-validation-for="DueDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label"></label><br />
+                    <select asp-for="Status" class="form-select" id="exampleSelect1">
+                        <option>Paid</option>
+                        <option>Unpaid</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</center>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
