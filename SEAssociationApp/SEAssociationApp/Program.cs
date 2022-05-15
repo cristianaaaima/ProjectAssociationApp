@@ -6,33 +6,34 @@ using SEProjectApp.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseSqlServer(connectionString));
-//builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<ApplicationDbContext>();
-//builder.Services.AddControllersWithViews();
-
+//Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-var connectionStringIdentity = builder.Configuration.GetConnectionString("IdentityConnection");
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionStringIdentity));
-
-builder.Services.AddDbContext<AssociationContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
-builder.Services.AddScoped<IApartmentRepository, ApartmentRepository>();
-builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();
-builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
-//builder.Services.AddScoped<IBaseRepository, BaseRepository>();
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//var connectionStringIdentity = builder.Configuration.GetConnectionString("IdentityConnection");
+
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseSqlServer(connectionStringIdentity));
+
+//builder.Services.AddDbContext<AssociationContext>(options =>
+//    options.UseSqlServer(connectionString));
+
+
+//builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+//builder.Services.AddScoped<IApartmentRepository, ApartmentRepository>();
+//builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();
+//builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>(); 
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+
 
 var app = builder.Build();
 
