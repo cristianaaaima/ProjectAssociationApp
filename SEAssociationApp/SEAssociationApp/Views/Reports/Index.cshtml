@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SEProjectApp.DataModel.Invoice>
+
+@{
+    ViewData["Title"] = "Reports";
+}
+<link rel="stylesheet" href="~/bootstrap/bootstrap_nav.css">
+
+<h1>Reports</h1>
+
+<div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Paid')">Paid invoices</button>
+    <button class="tablinks" onclick="openCity(event, 'Unpaid')">Unpaid invoices</button>
+</div>
+
+<div id="Paid" class="tabcontent">
+    @foreach (var item in Model)
+    {
+        @if (item.Status.Equals("Paid")){
+            <div class="card border-primary mb-3" style="max-width: 20rem;">
+                <div class="card-header">Id Invoice: @Html.DisplayFor(modelItem => item.InvoiceId)</div>
+                <div class="card-body">
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                    <p class="card-text">Apartment: @Html.DisplayFor(modelItem => item.ApartmentNo)</p>
+                    <p class="card-text">User: @Html.DisplayFor(modelItem => item.UserName)</p>
+                    <p class="card-text">Price: @Html.DisplayFor(modelItem => item.Price) RON</p>
+                    <a type="button" class="badge badge-pill badge-danger" asp-action="Delete" asp-route-id="@item.InvoiceId">Delete</a>
+                </div>
+            </div>
+         }
+    }
+</div>
+
+<div id="Unpaid" class="tabcontent">
+    @foreach (var item in Model)
+    {
+        @if (item.Status.Equals("Unpaid"))
+        {
+    <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Id Invoice: @Html.DisplayFor(modelItem => item.InvoiceId)</div>
+        <div class="card-body">
+            <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+            <p class="card-text">Apartment: @Html.DisplayFor(modelItem => item.ApartmentNo)</p>
+            <p class="card-text">User: @Html.DisplayFor(modelItem => item.UserName)</p>
+            <p class="card-text">Price: @Html.DisplayFor(modelItem => item.Price) RON</p>
+            <a type="button" class="badge badge-pill badge-danger" asp-action="Delete" asp-route-id="@item.InvoiceId">Delete</a>
+        </div>
+    </div>
+        }
+    }
+</div>
+
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+
