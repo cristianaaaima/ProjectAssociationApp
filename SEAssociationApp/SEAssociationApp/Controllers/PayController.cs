@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SEProjectApp.DataAccess;
@@ -6,6 +7,7 @@ using SEProjectApp.DataModel;
 
 namespace SEAssociationApp.Controllers
 {
+    [Authorize(Roles = "User")]
     public class PayController : Controller
     {
        
@@ -19,8 +21,8 @@ namespace SEAssociationApp.Controllers
             // GET: Pay
             public async Task<IActionResult> Index()
             {
-                var tenantsAssDbContext = _context.Invoice.Include(i => i.Apartment);
-                return View(await tenantsAssDbContext.ToListAsync());
+                var associationContext = _context.Invoice.Include(i => i.Apartment);
+                return View(await associationContext.ToListAsync());
             }
 
             // GET: Pay/Details/5

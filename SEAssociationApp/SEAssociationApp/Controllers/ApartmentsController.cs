@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SEProjectApp.DataAccess;
@@ -6,6 +7,7 @@ using SEProjectApp.DataModel;
 
 namespace SEAssociationApp.Controllers
 {
+    [Authorize(Roles = "User, Admin")]
     public class ApartmentsController : Controller
     {
         
@@ -20,8 +22,8 @@ namespace SEAssociationApp.Controllers
         // GET: Reports
         public async Task<IActionResult> Index()
         {
-            var tenantsAssDbContext = _context.Apartment.Include(a => a.Building);
-            return View(await tenantsAssDbContext.ToListAsync());
+            var associationContext = _context.Apartment.Include(a => a.Building);
+            return View(await associationContext.ToListAsync());
         }
 
         // GET: Apartments/Details/5
@@ -44,6 +46,7 @@ namespace SEAssociationApp.Controllers
         }
 
         // GET: Apartments/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["BuildingId"] = new SelectList(_context.Building, "BuildingId", "BuildingId");
@@ -53,8 +56,10 @@ namespace SEAssociationApp.Controllers
         // POST: Apartments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("ApartmentId,ApartmentNo,UserId,UserName,BuildingId,BuildingNo")] Apartment apartment)
         {
             if (ModelState.IsValid)
@@ -68,6 +73,7 @@ namespace SEAssociationApp.Controllers
         }
 
         // GET: Apartments/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -89,6 +95,7 @@ namespace SEAssociationApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("ApartmentId,ApartmentNo,UserId,UserName,BuildingId,BuildingNo")] Apartment apartment)
         {
             if (id != apartment.ApartmentId)
@@ -121,6 +128,7 @@ namespace SEAssociationApp.Controllers
         }
 
         // GET: Apartments/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -140,8 +148,10 @@ namespace SEAssociationApp.Controllers
         }
 
         // POST: Apartments/Delete/5
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var apartment = await _context.Apartment.FindAsync(id);
