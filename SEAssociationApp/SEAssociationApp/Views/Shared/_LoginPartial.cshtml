@@ -2,17 +2,115 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+
+
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
+
+     @if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Invoices" asp-action="Index">
+                    Manage Invoices
+                    <i class="fas fa-tasks"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index">
+                    Reports
+                    <i class="fas fa-newspaper"></i>
+                </a>
+            </li>
+
+             <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Apartments" asp-action="Index">
+                   Apartments
+                  
+                </a>
+            </li>
+
+             <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Buildings" asp-action="Index">
+                    Buildings
+                   
+                </a>
+            </li>
+        } 
+        
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Pay" asp-action="Index">
+                    Pay Invoices
+                    <i class="fab fa-paypal"></i>
+                </a>
+            </li>
+            
+            @*<li class="nav-item dropdown">
+                <a class="nav-link text-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Building</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" asp-area="" asp-controller="Buildings" asp-action="Index">Building List</a>
+                    <a class="dropdown-item" asp-area="" asp-controller="Buildings" asp-action="Create">Add building details</a>
+                </div>
+            </li>*@
+          
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Buildings" asp-action="Index">
+                   Buildings
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Apartments" asp-action="Index">
+                   Apartments
+                </a>
+            </li>
+
+
+@*
+            <li class="nav-item dropdown">
+                <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Apartment</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" asp-controller="Apartments" asp-action="Index">Apartments List</a>
+                    <a class="dropdown-item" asp-controller="Apartments" asp-action="Create">Add apartment details</a>
+                </div>
+            </li>*@
+        }
+        @*<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Profile
+                <i class="fas fa-user"></i>
+            </a>
+
+            <div class="dropdown-menu">
+                <a id="manage" class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Manage Profile</a>
+                <a id="manage" class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/ChangePassword" title="Change">Change Password</a>
+                <a id="manage" class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Email" title="Email">Change Email</a>
+            </div>
+        </li>*@
+
+           <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                   Manage Profile
+                </a>
+            </li>
+
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">
+                    Logout
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </form>
+        </li>
+
+
 }
 else
 {
@@ -24,3 +122,11 @@ else
     </li>
 }
 </ul>
+
+
+<script type="text/javascript" src="js/bootstrap/bootstrap-dropdown.js"></script>
+<script>
+     $(document).ready(function(){
+        $('.dropdown-toggle').dropdown()
+    });
+</script>

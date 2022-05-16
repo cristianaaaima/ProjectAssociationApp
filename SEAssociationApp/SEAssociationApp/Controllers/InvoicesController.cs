@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SEProjectApp.DataAccess;
@@ -6,6 +7,7 @@ using SEProjectApp.DataModel;
 
 namespace SEAssociationApp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class InvoicesController : Controller
     {
         private readonly AssociationContext _context;

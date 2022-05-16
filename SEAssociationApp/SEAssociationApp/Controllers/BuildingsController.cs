@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SEProjectApp.DataAccess;
 using SEProjectApp.DataModel;
 
 namespace SEAssociationApp.Controllers
 {
+    [Authorize(Roles = "User, Admin")]
     public class BuildingsController : Controller
     {
         private readonly AssociationContext _context;
@@ -36,6 +38,7 @@ namespace SEAssociationApp.Controllers
             return View(building);
         }
         // GET: Building/Create
+        [Authorize(Roles ="Admin")]
         public IActionResult Create()
         {
             return View();
@@ -46,6 +49,7 @@ namespace SEAssociationApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("BuildingId,StreetName,StreetNo,BuildingNo")] Building building)
         {
             if (ModelState.IsValid)
@@ -57,6 +61,7 @@ namespace SEAssociationApp.Controllers
             return View(building);
         }
         // GET: Building/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,6 +82,7 @@ namespace SEAssociationApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("BuildingId,StreetName,StreetNo,BuildingNo")] Building building)
         {
             if (id != building.BuildingId)
@@ -106,7 +112,7 @@ namespace SEAssociationApp.Controllers
             }
             return View(building);
         }
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         // GET: Building/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -128,6 +134,7 @@ namespace SEAssociationApp.Controllers
         // POST: Building/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var building = await _context.Building.FindAsync(id);
