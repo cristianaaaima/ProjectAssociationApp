@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SEProjectApp.DataModel.Furnisor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Furnisor</h1>
+
+<p>
+    <a style="background-color:gray" class="badge badge-light" asp-action="Create">Add new Furnisor details</a>
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-secondary">
+            <th>
+                @Html.DisplayNameFor(model => model.FurnisorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FurnisorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                <a style="background-color:gray" class="badge badge-pill badge-warning" asp-action="Edit" asp-route-id="@item.FurnisorId">Edit</a> |
+                <a style="background-color:gray" class="badge badge-pill badge-info" asp-action="Details" asp-route-id="@item.FurnisorId">Details</a> |
+                <a style="background-color:gray" class="badge badge-pill badge-danger" asp-action="Delete" asp-route-id="@item.FurnisorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

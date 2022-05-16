@@ -23,5 +23,6 @@ namespace SEProjectApp.DataModel
         public Building? Building { get; set; }
 
         public ICollection<Invoice>? Invoices { get; set; }
+
     }
 }

@@ -30,14 +30,13 @@ namespace SEProjectApp.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ApartmentId"), 1L, 1);
 
-                    b.Property<int>("ApartmentNo")
+                    b.Property<int?>("ApartmentNo")
                         .HasColumnType("int");
 
-                    b.Property<int>("BuildingId")
+                    b.Property<int?>("BuildingId")
                         .HasColumnType("int");
 
                     b.Property<string>("BuildingNo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserId")
@@ -63,20 +62,39 @@ namespace SEProjectApp.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BuildingId"), 1L, 1);
 
                     b.Property<string>("BuildingNo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetNo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BuildingId");
 
                     b.ToTable("Building");
+                });
+
+            modelBuilder.Entity("SEProjectApp.DataModel.Furnisor", b =>
+                {
+                    b.Property<int>("FurnisorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FurnisorId"), 1L, 1);
+
+                    b.Property<DateTime>("DueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FurnisorName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("FurnisorId");
+
+                    b.ToTable("Furnisor");
                 });
 
             modelBuilder.Entity("SEProjectApp.DataModel.Invoice", b =>
@@ -87,7 +105,7 @@ namespace SEProjectApp.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InvoiceId"), 1L, 1);
 
-                    b.Property<int>("ApartmentId")
+                    b.Property<int?>("ApartmentId")
                         .HasColumnType("int");
 
                     b.Property<int>("ApartmentNo")
@@ -99,6 +117,9 @@ namespace SEProjectApp.DataAccess.Migrations
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("FurnisorId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
@@ -115,6 +136,8 @@ namespace SEProjectApp.DataAccess.Migrations
 
                     b.HasIndex("ApartmentId");
 
+                    b.HasIndex("FurnisorId");
+
                     b.ToTable("Invoice");
                 });
 
@@ -122,9 +145,7 @@ namespace SEProjectApp.DataAccess.Migrations
                 {
                     b.HasOne("SEProjectApp.DataModel.Building", "Building")
                         .WithMany("Apartments")
-                        .HasForeignKey("BuildingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BuildingId");
 
                     b.Navigation("Building");
                 });
@@ -133,11 +154,15 @@ namespace SEProjectApp.DataAccess.Migrations
                 {
                     b.HasOne("SEProjectApp.DataModel.Apartment", "Apartment")
                         .WithMany("Invoices")
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ApartmentId");
+
+                    b.HasOne("SEProjectApp.DataModel.Furnisor", "Furnisor")
+                        .WithMany("Invoices")
+                        .HasForeignKey("FurnisorId");
 
                     b.Navigation("Apartment");
+
+                    b.Navigation("Furnisor");
                 });
 
             modelBuilder.Entity("SEProjectApp.DataModel.Apartment", b =>
@@ -148,6 +173,11 @@ namespace SEProjectApp.DataAccess.Migrations
             modelBuilder.Entity("SEProjectApp.DataModel.Building", b =>
                 {
                     b.Navigation("Apartments");
+                });
+
+            modelBuilder.Entity("SEProjectApp.DataModel.Furnisor", b =>
+                {
+                    b.Navigation("Invoices");
                 });
 #pragma warning restore 612, 618
         }

@@ -20,10 +20,14 @@ namespace SEProjectApp.DataModel
 
         public DateTime DueDate { get; set; }
 
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
         public int? ApartmentId { get; set; }
 
         public Apartment? Apartment { get; set; }
+
+        public int? FurnisorId { get; set; }
+
+        public Furnisor? Furnisor { get; set; }
     }
 }

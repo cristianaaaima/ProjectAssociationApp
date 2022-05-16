@@ -13,7 +13,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="InvoiceId" />
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
@@ -22,26 +22,26 @@
                 <label asp-for="Status" class="control-label"></label><br />
                 <select asp-for="Status" class="form-select" id="exampleSelect1">
                     <option>Paid</option>
-                    <option>Unpaid</option>
+                    <!--<option>Unpaid</option> -->
                 </select>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label asp-for="UserName" class="control-label"></label>
                 <input asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label asp-for="ApartmentNo" class="control-label"></label>
                 <input asp-for="ApartmentNo" class="form-control" />
                 <span asp-validation-for="ApartmentNo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label asp-for="ApartmentId" class="control-label"></label>
                 <input asp-for="ApartmentId" class="form-control" />
                 <span asp-validation-for="ApartmentId" class="text-danger"></span>

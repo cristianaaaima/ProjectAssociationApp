@@ -22,6 +22,7 @@ namespace SEProjectApp.DataAccess
 
         public DbSet<Invoice> Invoice { get; set; }
 
-      
+        public DbSet<Furnisor> Furnisor { get; set; }
+
     }
 }
