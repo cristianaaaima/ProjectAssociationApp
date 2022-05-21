@@ -108,7 +108,7 @@ namespace SEProjectApp.DataAccess.Migrations
                     b.Property<int?>("ApartmentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ApartmentNo")
+                    b.Property<int?>("ApartmentNo")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -121,15 +121,13 @@ namespace SEProjectApp.DataAccess.Migrations
                     b.Property<int?>("FurnisorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Price")
+                    b.Property<int?>("Price")
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("InvoiceId");

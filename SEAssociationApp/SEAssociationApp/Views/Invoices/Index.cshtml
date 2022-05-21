@@ -7,7 +7,7 @@
 <h1>Invoices</h1>
 
 <p>
-    <a style="background-color:gray"; type="button" class="badge badge-pill badge-success" asp-action="Create">Create New</a>
+    <a style="background-color:green"; type="button" class="badge badge-pill badge-success" asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -50,9 +50,9 @@
             </td>
 
             <td>
-                <a style="background-color:gray"; type="button" class="badge badge-pill badge-primary" asp-action="Edit" asp-route-id="@item.InvoiceId">Edit</a> |
+                <a style="background-color:orange"; type="button" class="badge badge-pill badge-primary" asp-action="Edit" asp-route-id="@item.InvoiceId">Edit</a> |
                 <a style="background-color:gray"; type="button" class="badge badge-pill badge-secondary" asp-action="Details" asp-route-id="@item.InvoiceId">Details</a> |
-                <a style="background-color:gray"; type="button" class="badge badge-pill badge-danger" asp-action="Delete" asp-route-id="@item.InvoiceId">Delete</a>
+                <a style="background-color:red"; type="button" class="badge badge-pill badge-danger" asp-action="Delete" asp-route-id="@item.InvoiceId">Delete</a>
             </td>
         </tr>
 }

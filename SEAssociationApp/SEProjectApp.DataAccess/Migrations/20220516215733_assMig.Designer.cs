@@ -12,8 +12,8 @@ using SEProjectApp.DataAccess;
 namespace SEProjectApp.DataAccess.Migrations
 {
     [DbContext(typeof(AssociationContext))]
-    [Migration("20220516202532_asocContext")]
-    partial class asocContext
+    [Migration("20220516215733_assMig")]
+    partial class assMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -110,7 +110,7 @@ namespace SEProjectApp.DataAccess.Migrations
                     b.Property<int?>("ApartmentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ApartmentNo")
+                    b.Property<int?>("ApartmentNo")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -123,15 +123,13 @@ namespace SEProjectApp.DataAccess.Migrations
                     b.Property<int?>("FurnisorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Price")
+                    b.Property<int?>("Price")
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("InvoiceId");

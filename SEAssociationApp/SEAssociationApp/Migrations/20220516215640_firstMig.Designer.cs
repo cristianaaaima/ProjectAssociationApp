@@ -12,8 +12,8 @@ using SEAssociationApp.Data;
 namespace SEAssociationApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220516202507_appContext")]
-    partial class appContext
+    [Migration("20220516215640_firstMig")]
+    partial class firstMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

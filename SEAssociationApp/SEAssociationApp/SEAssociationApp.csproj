@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\Migrations\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Views\Apartments\" />
     <Folder Include="Views\Buildings\" />
     <Folder Include="Views\Invoices\" />
