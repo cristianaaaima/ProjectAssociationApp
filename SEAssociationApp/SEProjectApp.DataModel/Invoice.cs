@@ -22,7 +22,7 @@ namespace SEProjectApp.DataModel
 
         public string Description { get; set; }
 
-        public int? ApartmentId { get; set; }
+        public int ApartmentId { get; set; }
 
         public Apartment? Apartment { get; set; }
 
