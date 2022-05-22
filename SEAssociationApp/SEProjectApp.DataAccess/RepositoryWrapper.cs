@@ -15,6 +15,7 @@ namespace SEProjectApp.DataAccess
         private IInvoiceRepository _invoiceRepository;
         private IBuildingRepository _buildingRepository;
         private IApartmentRepository _apartmentRepository;
+        private IFurnisorRepository _furnisorRepository;
 
         public IBuildingRepository BuildingRepository
         {
@@ -37,6 +38,18 @@ namespace SEProjectApp.DataAccess
                     _apartmentRepository = new ApartmentRepository(_associationContext);
                 }
                 return _apartmentRepository;
+            }
+        }
+
+        public IFurnisorRepository FurnisorRepository
+        {
+            get
+            {
+                if (_furnisorRepository == null)
+                {
+                    _furnisorRepository = new FurnisorRepository(_associationContext);
+                }
+                return _furnisorRepository;
             }
         }
 
