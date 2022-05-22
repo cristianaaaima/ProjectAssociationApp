@@ -42,5 +42,64 @@ namespace SEProjectApp.AppLogic.Services
         {
             repositoryWrapper.ApartmentRepository.Delete(apartment);
         }
+
+        public int GetNoInvoicesWithPriceLowerThan(int price1, Apartment a)
+        {
+            int cnt = 0;
+            foreach (var invoice in a.Invoices)
+            {
+                var price = invoice.Price;
+                if (price < price1)
+                {
+                    cnt++;
+                }
+            }
+
+            return cnt;
+        }
+
+        public int GetNoApartmentsWhereUserName(string name, List<Apartment> aps)
+        {
+            int cnt = 0;
+            foreach (var a in aps)
+            {
+                if (a.UserName.Equals(name))
+                    cnt++;
+            }
+            return cnt;
+        }
+
+        public int GetNoApartmentsWhereBuildingId(int id, List<Apartment> aps)
+        {
+            int cnt = 0;
+            foreach (var a in aps)
+            {
+                if (a.BuildingId == id)
+                    cnt++;
+            }
+            return cnt;
+        }
+
+        public int GetNoApartmentsWhereBuildingIdAndUserName(int id, string username, List<Apartment> aps)
+        {
+            int cnt = 0;
+            foreach (var a in aps)
+            {
+                if (a.BuildingId == id && a.UserName.Equals(username))
+                    cnt++;
+            }
+            return cnt;
+        }
+
+        public int GetNoApartmentsWhereApartmentNoAndApartmentId(int id, int apNo, List<Apartment> aps)
+        {
+            int cnt = 0;
+            foreach (var a in aps)
+            {
+                if (a.ApartmentNo == apNo && a.ApartmentId == id)
+                    cnt++;
+            }
+            return cnt;
+        }
     }
 }

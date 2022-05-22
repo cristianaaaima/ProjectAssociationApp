@@ -11,6 +11,8 @@ namespace SEProjectApp.Abstractions.Repository
         IInvoiceRepository InvoiceRepository { get; }
         IBuildingRepository BuildingRepository { get; }
         IApartmentRepository ApartmentRepository { get; }
+
+        IFurnisorRepository FurnisorRepository { get; }
         void Save();
     }
 }
