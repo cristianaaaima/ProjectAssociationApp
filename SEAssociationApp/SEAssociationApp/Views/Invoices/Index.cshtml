@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SEProjectApp.DataModel.Invoice>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Invoices</h1>
+
+<p>
+    <a style="background-color:green"; type="button" class="badge badge-pill badge-success" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id Invoice
+            </th>
+            <th>
+                User Name
+            </th>
+            <th>
+                Apartment Number
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+            <td>
+                <a style="background-color:orange"; type="button" class="badge badge-pill badge-primary" asp-action="Edit" asp-route-id="@item.InvoiceId">Edit</a> |
+                <a style="background-color:gray"; type="button" class="badge badge-pill badge-secondary" asp-action="Details" asp-route-id="@item.InvoiceId">Details</a> |
+                <a style="background-color:red"; type="button" class="badge badge-pill badge-danger" asp-action="Delete" asp-route-id="@item.InvoiceId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

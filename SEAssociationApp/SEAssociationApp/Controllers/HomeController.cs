@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using SEAssociationApp.Models;
 using System.Diagnostics;
 
@@ -8,14 +9,31 @@ namespace SEAssociationApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+
+        [TempData]
+        public string StatusLogin { get; set; }
+
+        public HomeController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _logger = logger;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public IActionResult Index()
         {
-            return View();
+            if (_signInManager.IsSignedIn(User))
+            {
+                StatusLogin = "You successfully logged in!";
+                return View();
+            }
+            else
+            {
+                StatusLogin = "It was a problem with your log in!";
+                return View();
+            }
         }
 
         public IActionResult Privacy()
