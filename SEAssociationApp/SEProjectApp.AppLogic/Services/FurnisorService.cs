@@ -44,7 +44,7 @@ namespace SEProjectApp.AppLogic.Services
         public int GetNoFurnisorsWhereFurnisorName(string name, List<Furnisor> furnisors)
         {
             int cnt = 0;
-            foreach(var f in furnisors)
+            foreach (var f in furnisors)
             {
                 if (f.FurnisorName.Equals(name))
                 {
@@ -59,7 +59,7 @@ namespace SEProjectApp.AppLogic.Services
             var name = "";
             foreach (var f in furnisors)
             {
-                if (f.FurnisorId==id)
+                if (f.FurnisorId == id)
                 {
                     name = f.FurnisorName;
                 }
@@ -72,7 +72,7 @@ namespace SEProjectApp.AppLogic.Services
             var name = "";
             foreach (var f in furnisors)
             {
-                if (f.StartDate==dt)
+                if (f.StartDate == dt)
                 {
                     name = f.FurnisorName;
                 }
@@ -82,7 +82,7 @@ namespace SEProjectApp.AppLogic.Services
 
         public int GetIdWhereDueDate(DateTime dt, List<Furnisor> furnisors)
         {
-            var id=0;
+            var id = 0;
             foreach (var f in furnisors)
             {
                 if (f.DueDate == dt)
@@ -98,7 +98,7 @@ namespace SEProjectApp.AppLogic.Services
             int cnt = 0;
             foreach (var f in furnisors)
             {
-                if (f.StartDate.CompareTo(dt)==-1)
+                if (f.StartDate.CompareTo(dt) == -1)
                 {
                     cnt++;
                 }

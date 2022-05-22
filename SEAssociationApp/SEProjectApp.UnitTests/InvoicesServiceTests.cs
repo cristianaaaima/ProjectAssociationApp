@@ -31,7 +31,7 @@ namespace SEProjectApp.UnitTests
                     },
                     new Invoice()  {
                         InvoiceId=2,
-                        UserName="Ion",
+                        UserName="Ionut",
                         ApartmentNo=14,
                         Price=48,
                         Status="Paid",
